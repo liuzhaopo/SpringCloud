@@ -7,11 +7,11 @@ server:
 spring:
   profiles: dev # 开发环境
   application:
-    name: microservice-config-dev
+    name: lzhpo-config-dev
 ---
 server:
   port: 4002 #端口号
 spring:
   profiles: prod # 生产环境
   application:
-    name: microservice-config-prod
+    name: lzhpo-config-prod
