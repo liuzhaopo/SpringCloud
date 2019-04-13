@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: lzhpo-config-product
+      profile: prod
+      label: master
+      uri: http://localhost:5001

@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    config:
+      name: lzhpo-config-product
+      profile: dev
+      label: master
+      uri: http://localhost:5001
+
+  rabbitmq:
+    host: 192.168.200.115
+    port: 5672
+    username: guest
+    password: guest
+
+
+# 暴露触发消息总线的地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

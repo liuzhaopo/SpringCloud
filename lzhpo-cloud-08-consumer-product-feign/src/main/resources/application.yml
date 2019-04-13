@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    registerWithEureka: false # 服务注册，false表示不将本消费者注册到 Eureka 服务器
+    fetchRegistry: true # 服务发现，true从 Eureka 服务器中获取注册信息
+    serviceUrl:
+      defaultZone: http://eureka6001.com:6001/eureka/,http://eureka6002.com:6002/eureka/
+
+#Feign 是自带断路器的，也就是针对 消费者（客户端）进行服务熔断，需要在配置文件中开启它
+# 在Feign中需要开启 Hystrix
+feign:
+  hystrix:
+    enabled: true

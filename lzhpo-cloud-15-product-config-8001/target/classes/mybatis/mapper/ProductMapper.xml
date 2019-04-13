@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzhpo.springcloud.mapper.ProductMapper">
+
+    <select id="findById" resultType="com.lzhpo.pojo.Product" parameterType="Long">
+        select pid, product_name, db_source from product where pid=#{pid};
+    </select>
+
+    <select id="findAll" resultType="com.lzhpo.pojo.Product">
+        select pid, product_name, db_source from product;
+    </select>
+
+    <insert id="addProduct" parameterType="com.lzhpo.pojo.Product">
+        INSERT INTO product(product_name, db_source) VALUES(#{productName},
+        DATABASE());
+    </insert>
+</mapper>

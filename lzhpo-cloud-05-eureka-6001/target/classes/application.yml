@@ -1,0 +1,27 @@
+server:
+  port: 6001 # 服务端口
+eureka:
+  instance:
+    ##单机版：
+    #hostname: localhost # eureka服务端的实例名称
+
+    ##集群版：
+    ###Windows中的host文件配置：
+    #127.0.0.1 eureka6001.com
+    #127.0.0.1 eureka6002.com
+    hostname: eureka6001.com # eureka服务端的实例名称
+
+  client:
+    registerWithEureka: false # 服务注册，false表示不将自已注册到Eureka服务中
+    fetchRegistry: false # 服务发现，false表示自己不从Eureka服务中获取注册信息
+    serviceUrl: # Eureka客户端与Eureka服务端的交互地址，集群版配置对方的地址，单机版配置自己（如果不配置则默认本机8761端口）
+      ##单机版：
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      ##集群版：你中有我，我中有你。除自己外的所有注册地址。
+      defaultZone: http://eureka6002.com:6002/eureka/
+
+
+####################################################以下建议开发环境配置####################################################
+  server:
+    enable-self-preservation: false #禁用自我保护模式（生产模式不建议关闭，开发模式中随意）
+    eviction-interval-timer-in-ms: 2000    #等待2秒没心跳自动剔除

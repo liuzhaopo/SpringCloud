@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lzhpo.springcloud</groupId>
+    <artifactId>lzhpo-cloud-01</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>../lzhpo-cloud-02-api</module>
+        <module>../lzhpo-cloud-03-provider-product-8001</module>
+        <module>../lzhpo-cloud-04-consumer-product-80</module>
+        <module>../lzhpo-cloud-05-eureka-6001</module>
+        <module>../lzhpo-cloud-06-eureka-6002</module>
+        <module>../lzhpo-cloud-07-provider-product-8002</module>
+        <module>../lzhpo-cloud-08-consumer-product-feign</module>
+        <module>../lzhpo-cloud-09-provider-product-hystrix-8001</module>
+        <module>../lzhpo-cloud-10-hystrix-dashboard-9001</module>
+        <module>../lzhpo-cloud-11-zuul-gateway-7001</module>
+        <module>../lzhpo-cloud-12-config-server-5001</module>
+        <module>../lzhpo-cloud-13-config-client-8080</module>
+        <module>../lzhpo-cloud-14-eureka-config-6001</module>
+        <module>../lzhpo-cloud-15-product-config-8001</module>
+        <module>../lzhpo-cloud-16-product-bus-8001</module>
+    </modules>
+    <!--父工程 项目类型改为pom-->
+    <packaging>pom</packaging>
+
+    <!-- spring boot 采用 2.0.7 版本 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.7.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.12</junit.version>
+        <!-- spring cloud 采用 Finchley.SR2 版本 -->
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+    </properties>
+
+    <!--依赖声明-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <!--maven不支持多继承，使用import来依赖管理配置-->
+                <scope>import</scope>
+            </dependency>
+            <!--导入 mybatis 启动器-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.3.2</version>
+            </dependency>
+            <!--druid数据源-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.12</version>
+            </dependency>
+            <!--MySQL连接包-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.13</version>
+            </dependency>
+            <!--JUnit测试-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

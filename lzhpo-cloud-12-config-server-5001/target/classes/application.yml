@@ -1,0 +1,13 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: lzhpo-config
+
+  cloud:
+    config:
+      server:
+        git:
+          #远程库SpringCloud的GitHub地址，不是git@github.com:liuzhaopo/SpringCloud.git
+          uri: https://github.com/liuzhaopo/SpringCloud.git
