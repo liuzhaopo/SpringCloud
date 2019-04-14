@@ -1,0 +1,5 @@
+com\lzhpo\springcloud\service\impl\ProductServiceImpl.class
+com\lzhpo\springcloud\controller\ProductController.class
+com\lzhpo\springcloud\service\ProductService.class
+com\lzhpo\springcloud\mapper\ProductMapper.class
+com\lzhpo\springcloud\Provider_Product_8001.class

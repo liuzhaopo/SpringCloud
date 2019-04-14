@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lzhpo.springcloud.mapper.ProductMapper">
 
+    <!--注意：写com.lzhpo.pojo.Product，不要写Product-->
     <select id="findById" resultType="com.lzhpo.pojo.Product" parameterType="Long">
         select pid, product_name, db_source from product where pid=#{pid};
     </select>

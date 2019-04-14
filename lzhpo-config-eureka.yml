@@ -10,12 +10,15 @@ spring:
     name: microservice-config-eureka
 eureka:
   instance:
-    hostname: eureka6001.com
+    #Eureka注册IP地址
+    #hostname: eureka6001.com
+    #Docker
+    hostname: 192.168.200.115
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://eureka6001.com:6001/eureka/
+      defaultZone: http://${eureka.instance.hostname}:6001/eureka/
   server:
     enable-self-preservation: false # 禁用自我保护机制*****************
 ---

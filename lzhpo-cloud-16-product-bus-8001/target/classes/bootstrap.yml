@@ -4,7 +4,9 @@ spring:
       name: lzhpo-config-product
       profile: dev
       label: master
-      uri: http://localhost:5001
+      #uri: http://localhost:5001
+      #Docker
+      uri: http://192.168.200.115:5001
 
   rabbitmq:
     host: 192.168.200.115

@@ -25,4 +25,49 @@
         </dependency>
     </dependencies>
 
+    <!--Docker自动化部署插件-->
+    <build>
+        <finalName>app</finalName>
+        <plugins>
+            <!-- 插件一定要在其他构建插件之上，否则打包文件会有问题。 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- docker的maven插件，官网：
+                  https://github.com/spotify/docker-maven-plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <!--生成镜像相关配置-->
+                <configuration>
+                    <!-- 将forceTags设为true，这样就会覆盖构建相同标签的镜像  -->
+                    <forceTags>true</forceTags>
+                    <!-- 远程 docker 宿主机地址, 端口号是/lib/systemd/system/docker.service所暴露的端口号, 生成镜像到docker中 -->
+                    <dockerHost>http://192.168.200.115:2375</dockerHost>
+                    <!--内容是之前修改的maven的settings.xml配置文件中，server节点的id-->
+                    <serverId>docker-aliyun</serverId>
+                    <!-- 镜像名：阿里云镜像仓库地址
+                                ${project.artifactId}引用当前工程名，
+                                ${project.version}引用当前工程版本号
+                                registry.cn-hangzhou.aliyuncs.com/mengxuegu/demo:0.0.1-SNAPSHOT -->
+                    <imageName>registry.cn-shanghai.aliyuncs.com/lzhpo/${project.artifactId}:${project.version}</imageName>
+                    <!--基础镜像-->
+                    <!--<baseImage>jdk1.8</baseImage>-->
+                    <baseImage>java</baseImage>
+                    <!--类似于Dockerfile的ENTRYPOINT指令-->
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>  <!-- 指定打包的资源文件 -->
+                            <targetPath>/</targetPath> <!-- 指定要复制的目录路径，这里是当前目录 -->
+                            <directory>${project.build.directory}</directory> <!-- 指定要复制的根目录，这里是target目录 -->
+                            <include>${project.build.finalName}.jar</include> <!-- 这里指定最后生成的jar包 -->
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

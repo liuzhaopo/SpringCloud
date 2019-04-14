@@ -1,0 +1,4 @@
+com\lzhpo\springcloud\ProductConsumer_80_Feign.class
+com\lzhpo\springcloud\controller\ProductController_Consumer.class
+com\lzhpo\springcloud\service\ProductClientService.class
+com\lzhpo\springcloud\service\ProductClientServiceFallBack.class

@@ -4,4 +4,6 @@ spring:
       name: lzhpo-config-eureka #github上的配置名称，注意没有yml后缀名
       profile: dev #本次访问的环境配置项
       label: master #远程库的分支名
-      uri: http://localhost:5001 #Config配置中心地址，通过它获取lzhpo-config-eureka.yml配置信息
+      #uri: http://localhost:5001 #Config配置中心地址，通过它获取lzhpo-config-eureka.yml配置信息
+      #Docker
+      uri: http://192.168.200.115:5001
